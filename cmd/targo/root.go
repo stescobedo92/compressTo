@@ -8,8 +8,9 @@ import (
 )
 
 var targoRootCmd = &cobra.Command{
-	Use:   "targo",
-	Short: "targo - a simple CLI to create targ.gz files",
+	Use:     "targo",
+	Version: "1.0.0",
+	Short:   "targo - a simple CLI to create targ.gz files",
 	Long: `targo is a super fancy CLI (kidding)
    
 One can use targo to modify or inspect strings straight from the terminal`,

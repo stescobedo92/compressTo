@@ -20,10 +20,11 @@ func createTarfile(cmd *cobra.Command, args []string) {
 
 	if len(args) > 0 {
 		// Files which to include in the tar.gz archive
-		filesToIncludeInTar := args[1:]
+		filesToIncludeInTar := args
+		outputFileName, _ := cmd.Flags().GetString("output")
 
 		// Create output file
-		out, err := os.Create(args[0] + ".tar.gz")
+		out, err := os.Create(outputFileName + ".tar.gz")
 		if err != nil {
 			log.Fatalln("Error writing archive:", err)
 		}
@@ -44,4 +45,5 @@ func createTarfile(cmd *cobra.Command, args []string) {
 
 func init() {
 	targoRootCmd.AddCommand(tarCmd)
+	tarCmd.PersistentFlags().StringP("output", "o", "", "Name of output file")
 }
